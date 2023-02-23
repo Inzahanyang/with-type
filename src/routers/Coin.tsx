@@ -121,6 +121,7 @@ const More = styled.span`
   background-color: ${(props) => props.theme.textColor};
   border-radius: 20px;
   margin-left: 4px;
+  cursor: pointer;
 `;
 const EmptyDiv = styled.div`
   margin: 20px 0;
