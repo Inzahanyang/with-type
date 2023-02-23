@@ -32,7 +32,8 @@ const ErrorDiv = styled.div`
 export default function Chart({ coinId }: ChartProps) {
   const { isLoading, data } = useQuery<IHistoryPrice[]>(
     ["history", coinId],
-    () => coinHistoryPriceInfoFetch(coinId)
+    () => coinHistoryPriceInfoFetch(coinId),
+    { refetchInterval: 10000 }
   );
 
   return (
