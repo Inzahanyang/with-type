@@ -1,1 +1,1 @@
-https://github.com/Inzahanyang/with-type
+https://inzahanyang.github.io/with-type/
