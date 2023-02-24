@@ -9,10 +9,10 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { darkmode } from "../atom";
 
 const Container = styled.div`
-  padding: 0px 20px;
   max-width: 480px;
   margin: 0 auto;
   position: relative;
+  overflow: hidden;
 `;
 
 const Header = styled.header`
@@ -24,32 +24,31 @@ const Header = styled.header`
 
 const Title = styled.h1`
   font-size: 24px;
-  margin: 0 12px;
 `;
 
 const CoinList = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  padding: 0 12px;
+  gap: 12px 6px;
 `;
 
 const Coin = styled.li`
   background-color: ${(props) => props.theme.cardColor};
+  color: ${(props) => props.theme.textColor};
   height: 56px;
   display: flex;
   align-items: center;
   justify-content: start;
-  margin-bottom: 10px;
   border-radius: 15px;
-  color: ${(props) => props.theme.textColor};
   font-size: 12px;
   font-weight: bold;
   position: relative;
   a {
     display: flex;
     align-items: center;
-    padding: 16px;
     transition: color 0.2s ease-in;
+    padding: 12px;
   }
   &:hover {
     a {
@@ -61,16 +60,15 @@ const Coin = styled.li`
 const Img = styled.img`
   width: 24px;
   height: 24px;
-  margin-right: 8px;
+  margin-right: 6px;
 `;
 
 const Rank = styled.span`
   font-size: 1px;
   position: absolute;
-  right: 10px;
-  top: 8px;
+  right: 8px;
+  top: 6px;
   color: ${(props) => props.theme.textColor};
-  letter-spacing: 0.5px;
 `;
 interface ThemeBtnProps {
   isDark: boolean;
@@ -138,7 +136,7 @@ export default function Coins() {
                   <Img
                     src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
                   />
-                  {coin.name}
+                  {coin.name.length > 9 ? coin.name.slice(0, 8) : coin.name}
                   <Rank>#{coin.rank}</Rank>
                 </Link>
               </Coin>
